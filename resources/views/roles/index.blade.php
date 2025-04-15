@@ -22,9 +22,10 @@
                 <div class="d-flex align-items-center">
                     <h5 class="card-title mb-0 flex-grow-1">@lang('translation.lists')</h5>
                     <div class="flex-shrink-0">
-                        <div class="d-flex gap-2 flex-wrap">
-                            <button class="btn btn-primary" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                            <a href="{{route('roles.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.role')</a>
+                        <div class="d-flex gap-2 flex-wrap">                              
+                            @can('role-create')
+                                <a href="{{route('roles.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.role')</a>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -56,17 +57,18 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a href="{{ route('roles.show', $role->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a href="{{ route('roles.edit', $role->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            {{-- <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a> --}}
-                                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-link text-danger"><i class="ri-delete-bin-6-fill align-bottom me-2 text-muted"></i> Delete</button>
-                                            </form>    
-                                        </li>
+                                        @can('role-edit')   
+                                            <li><a href="{{ route('roles.edit', $role->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>    
+                                        @endcan
+                                        @can('role-delete') 
+                                            <li>                                               
+                                                <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-link text-danger"><i class="ri-delete-bin-6-fill align-bottom me-2 text-muted"></i> Delete</button>
+                                                </form>    
+                                            </li>
+                                        @endcan
                                     </ul>
                                 </div>
                             </td>

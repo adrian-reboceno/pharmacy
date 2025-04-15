@@ -61,7 +61,7 @@
                                 <a href="{{ route('status.index') }}" class="nav-link">@lang('translation.status')</a>
                             </li>                                                      
                             <li class="nav-item">
-                                <a href="pages-team" class="nav-link">@lang('translation.category')</a>
+                                <a href="{{route('categories.index')}}" class="nav-link">@lang('translation.category')</a>
                             </li>
                         </ul>
                     </div>            

@@ -78,13 +78,12 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a href="{{ route('users.show', $user->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a href="{{ route('users.edit', $user->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li><a href="{{ route('users.editpassword', $user->id)}}" class="dropdown-item edit-item-btn"><i class="ri-lock-password-line align-bottom me-2 text-muted"></i> Edit password</a></li>
+                                        @can('user-edit')  
+                                            <li><a href="{{ route('users.edit', $user->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>                                    
+                                            <li><a href="{{ route('users.editpassword', $user->id)}}" class="dropdown-item edit-item-btn"><i class="ri-lock-password-line align-bottom me-2 text-muted"></i> Edit password</a></li>
+                                        @endcan
                                         @can('user-delete') 
-                                            <li>
-                                                {{-- <a class="dropdown-item remove-item-btn">
-                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                                </a> --}}
+                                            <li>                                                
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
