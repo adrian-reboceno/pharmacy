@@ -60,11 +60,13 @@
                                         <i class="ri-more-fill align-middle"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="{{ route('status.show', $status->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                        @can('status-show') 
+                                            <li><a href="{{ route('status.show', $status->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                        @endcan
                                         @can('status-edit') 
                                         <li><a href="{{ route('status.edit', $status->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                         @endcan
-                                        @can('status-edit') 
+                                        @can('status-delete') 
                                             <li>                                               
                                                 <form action="{{ route('status.destroy', $status->id) }}" method="POST">
                                                     @csrf

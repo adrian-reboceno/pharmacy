@@ -63,6 +63,9 @@
                             <li class="nav-item">
                                 <a href="{{route('categories.index')}}" class="nav-link">@lang('translation.category')</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('denominations.index')}}" class="nav-link">@lang('translation.denominations')</a>
+                            </li>
                         </ul>
                     </div>            
                 </li>
