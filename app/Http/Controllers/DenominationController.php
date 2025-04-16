@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Denomination;
+use App\Models\Status;
 
 class DenominationController extends Controller
 {
@@ -15,7 +16,7 @@ class DenominationController extends Controller
     {
         //
         // Fetch all denominations from the database
-        $denominations = Denomination::all();
+        $denominations = Denomination::with('status')->get();
         return view('denominations.index', compact('denominations'));
     }
 
@@ -26,7 +27,8 @@ class DenominationController extends Controller
     {
         //
         // Return a view to create a new denomination
-        return view('denominations.create');
+        $statuses = Status::all();
+        return view('denominations.create', compact('statuses'));
     }
 
     /**
@@ -38,11 +40,14 @@ class DenominationController extends Controller
         $request->validate([
             'denomination_name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'status_id' => 'required|integer',
+
         ]);
         // Create a new denomination instance
         Denomination::create([
             'name' => $request->denomination_name,
             'description' => $request->description,
+            'status_id' => $request->status_id,
         ]);
         Alert::toast('Create Denomination successfully!', 'success')
             ->position('top-right')
@@ -68,8 +73,10 @@ class DenominationController extends Controller
         //
         // Fetch the denomination to edit
         $denomination = Denomination::findOrFail($id);
+        // Fetch all statuses
+        $statuses = Status::all();
         // Return the edit view with the denomination
-        return view('denominations.edit', compact('denomination'));
+        return view('denominations.edit', compact('denomination', 'statuses'));
     }
 
     /**
@@ -81,6 +88,7 @@ class DenominationController extends Controller
         $request->validate([
             'denomination_name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'status_id' => 'required|integer',
         ]);
         // Find the denomination by ID
         $denomination = Denomination::findOrFail($id);
@@ -88,6 +96,7 @@ class DenominationController extends Controller
         $denomination->update([
             'name' => $request->denomination_name,
             'description' => $request->description,
+            'status_id' => $request->status_id,
         ]);
         Alert::toast('Update Denomination successfully!', 'success')
             ->position('top-right')

@@ -38,6 +38,19 @@
                                 @enderror
                             </div>
                         </div><!--end col-->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="mb-3">
+                                <label for="status_id" class="form-label">Status</label>                                               
+                                <select name="status_id" id="status_id" class="form-select mb-3" aria-label="Default select example">
+                                    @foreach ( $statuses as $status)
+                                        <option value="{{ $status->id }}" {{$status->id ==  $denomination->status_id ? 'selected' : ''}} >{{ $status->status_name }}</option>
+                                    @endforeach 
+                                </select>
+                                @error('status_id')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-lg-12">
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">@lang('translation.update')</button>

@@ -38,7 +38,8 @@
                             
                             <th>ID</th>                           
                             <th>Status</th>
-                            <th>description</th>                           
+                            <th>description</th>  
+                            <th>status</th>                         
                             <th>Create Date</th>   
                             <th>Update Date</th>                                                                  
                             <th>Action</th>
@@ -49,7 +50,8 @@
                         <tr>
                             <td>{{$denomination->id}}</td>                                                   
                             <td>{{$denomination->name}}</td> 
-                            <td>{{$denomination->description}}</td>                                                       
+                            <td>{{$denomination->description}}</td>   
+                            <td><span class="badge  bg-{{$denomination->status ? $denomination->status->status_color : ''}} ">{{$denomination->status ? $denomination->status->status_name : ''}}</span> </td>                                                     
                             <td>{{$denomination->created_at}}</td>   
                             <td>{{$denomination->updated_at}}</td>                                                                             
                             <td>
