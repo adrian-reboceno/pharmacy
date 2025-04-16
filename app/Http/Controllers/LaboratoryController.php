@@ -62,6 +62,10 @@ class LaboratoryController extends Controller
     public function show(string $id)
     {
         //
+        // Fetch the laboratory by ID
+        $laboratory = Laboratory::with('status')->findOrFail($id);
+        // Return the laboratory details view
+        return view('laboratories.show', compact('laboratory'));
     }
 
     /**
