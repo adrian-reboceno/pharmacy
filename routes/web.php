@@ -7,6 +7,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DenominationController;
+use App\Http\Controllers\LaboratoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +48,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('denominations', DenominationController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('laboratories', LaboratoryController::class);
 });
 /* Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);
