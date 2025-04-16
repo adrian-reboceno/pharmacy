@@ -39,6 +39,7 @@
                             <th>Category name</th>
                             <th>description</th>
                             <th>Parent category</th>  
+                            <th>Status</th>
                             <th>Create Date</th>   
                             <th>Update Date</th>                                                                  
                             <th>Action</th>
@@ -50,7 +51,8 @@
                             <td>{{$category->id}}</td>                                                   
                             <td>{{$category->category_name}}</td> 
                             <td>{{$category->description}}</td>
-                            <td>{{$category->parent_name ? $category->parent_name : 'N/A'}}</td>                                                                                
+                            <td>{{$category->parent_name ? $category->parent_name : 'N/A'}}</td>    
+                            <td><span class="badge  bg-{{ $category->status_color }} ">{{$category->status_name }}</span> </td>                                                                            
                             <td>{{$category->created_at}}</td>   
                             <td>{{$category->updated_at}}</td>                                                                             
                             <td>

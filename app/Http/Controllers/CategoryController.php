@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Models\Status;
 
 class CategoryController extends Controller
 {
@@ -16,10 +17,11 @@ class CategoryController extends Controller
     {
         //
         // Fetch all categories from the database
-        $categories = Category::all();
+        
         $categories = DB::table('categories as c')
         ->leftJoin('categories as p', 'c.parent_id', '=', 'p.id')
-        ->select('c.id', 'c.category_name as category_name', 'p.category_name as parent_name', 'c.description','c.created_at', 'c.updated_at')
+        ->leftJoin('statuses as s', 'c.status_id', '=', 's.id') // Join the statuses table
+        ->select('c.id', 'c.category_name as category_name', 'p.category_name as parent_name', 'c.description','c.created_at', 'c.updated_at', 's.status_name', 's.status_color')
         ->orderBy('c.category_name')
         ->get();
         return view('categories.index', compact('categories'));
@@ -33,7 +35,8 @@ class CategoryController extends Controller
         //
         // Return a view to create a new category
         $categories = Category::all();      
-        return view('categories.create', compact('categories'));
+        $statuses = Status::all();
+        return view('categories.create', compact('categories', 'statuses'));
     }
 
     /**
@@ -44,12 +47,14 @@ class CategoryController extends Controller
         //
         $request->validate([
             'category_name' => ['required', 'string', 'max:255'],            
-            'description' => ['required', 'string'],            
+            'description' => ['required', 'string'], 
+            'status_id' => ['required', 'integer'],           
         ]);
         Category::create([
             'parent_id' => $request->parent_id == 'Select' ? 0 : $request->parent_id,
             'category_name' => $request->category_name,
             'description' => $request->description,
+            'status_id' => $request->status_id,
         ]);
         Alert::toast('Create Category successfully!', 'success')
         ->position('top-right')
@@ -81,8 +86,10 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         // Fetch all categories for the parent dropdown
         $categories = Category::all();
+        // Fetch all statuses for the status dropdown
+        $statuses = Status::all();
         // Return the edit view with the category and parent categories
-        return view('categories.edit', compact('category', 'categories'));
+        return view('categories.edit', compact('category', 'categories', 'statuses'));
     }
 
     /**
@@ -93,7 +100,8 @@ class CategoryController extends Controller
         //
         $request->validate([
             'category_name' => ['required', 'string', 'max:255'],            
-            'description' => ['required', 'string'],            
+            'description' => ['required', 'string'],
+            'status_id' => ['required', 'integer'],            
         ]);
         // Find the category to update
         $category = Category::findOrFail($id);
@@ -102,6 +110,7 @@ class CategoryController extends Controller
             'parent_id' => $request->parent_id == 'Select' ? 0 : $request->parent_id,
             'category_name' => $request->category_name,
             'description' => $request->description,
+            'status_id' => $request->status_id,
         ]);
         Alert::toast('Update Category successfully!', 'success')
         ->position('top-right')
