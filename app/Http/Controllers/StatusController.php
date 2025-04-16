@@ -56,6 +56,7 @@ class StatusController extends Controller  implements HasMiddleware
         $request->validate([
             'status_name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
+            'color' => 'nullable|string|max:255', 
         ]);
         // Create a new status instance
         $status = Status::create([
@@ -105,7 +106,8 @@ class StatusController extends Controller  implements HasMiddleware
         $status = Status::findOrFail($id);
         // Validate the request data
         $request->validate([
-            'status_name' => 'required|string|max:255',             
+            'status_name' => 'required|string|max:255',    
+            'description' => 'nullable|string|max:255',         
             'color' => 'nullable|string|max:255',        
         ]);
         // Update the status instance

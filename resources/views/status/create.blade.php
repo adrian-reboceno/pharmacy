@@ -37,6 +37,21 @@
                                 @enderror
                             </div>
                         </div><!--end col-->
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="status_color" class="form-label">Color</label>
+                                <select class="form-select" name="status_color" id="status_color">                                  
+                                    <option value="success">Success</option>
+                                    <option value="primary opacity-25" >Opacity-25</option>
+                                    <option value="warning" >Warning</option>
+                                    <option value="danger">Danger</option>
+                                    <option value="primary bg-opacity-75" >Opacity-75 </option>                                   
+                                </select>                              
+                                @error('status_color')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">@lang('translation.create')</button>

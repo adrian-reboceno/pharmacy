@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DenominationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +44,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('denominations', DenominationController::class);
 });
 /* Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);
