@@ -1,6 +1,10 @@
 <?php
 return [
    "menu"=>"Menu",
+    "home"=>"Home",
+    "dashboard"=>"Dashboard",
+    "catalog"=>"Catalog",
+    "catalogs"=>"Catalogs",
     "users"=>"Users",
     "username" => "User name",
     "password" => "Password",
@@ -11,6 +15,8 @@ return [
     "pharmaceuticalform" => "Pharmaceutical Form",
     "denominations" => "Denominations",
     "denomination" => "Denomination",
+    "status" => "Status",
+    "statuses" => "Statuses",
     "saletypes" => "Sale Types",
     "saletype" => "Sale Type",
     "roles" => "Roles",

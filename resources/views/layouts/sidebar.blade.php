@@ -61,7 +61,16 @@
                                 <a href="{{ route('status.index') }}" class="nav-link">@lang('translation.status')</a>
                             </li>                                                      
                             <li class="nav-item">
-                                <a href="pages-team" class="nav-link">@lang('translation.category')</a>
+                                <a href="{{route('categories.index')}}" class="nav-link">@lang('translation.category')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('denominations.index')}}" class="nav-link">@lang('translation.denominations')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('laboratories.index')}}" class="nav-link">@lang('translation.laboratories')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('saletypes.index')}}" class="nav-link">@lang('translation.saletypes')</a>
                             </li>
                         </ul>
                     </div>            

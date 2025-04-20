@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DenominationController;
+use App\Http\Controllers\LaboratoryController;
+use App\Http\Controllers\SaleTypeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,9 +41,20 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/editpassword', [UserController::class, 'editPassword'])->name('users.editpassword');
 
 });
-
 Route::middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('categories', CategoryController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('denominations', DenominationController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('laboratories', LaboratoryController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('saletypes', SaleTypeController::class);
 });
 /* Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);

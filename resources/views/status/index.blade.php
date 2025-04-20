@@ -21,11 +21,13 @@
             <div class="card-header border-0">
                 <div class="d-flex align-items-center">
                     <h5 class="card-title mb-0 flex-grow-1">@lang('translation.lists')</h5>
-                    <div class="flex-shrink-0">
-                        <div class="d-flex gap-2 flex-wrap">
-                            <button class="btn btn-primary" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                            <a href="{{route('status.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.status')</a>
+                    <div class="flex-shrink-0">                       
+                        <div class="d-flex gap-2 flex-wrap">    
+                            @can('status-create')                        
+                                <a href="{{route('status.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.status')</a>
+                            @endcan
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -58,18 +60,21 @@
                                         <i class="ri-more-fill align-middle"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="{{ route('status.show', $status->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                        @can('status-show') 
+                                            <li><a href="{{ route('status.show', $status->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                        @endcan
+                                        @can('status-edit') 
                                         <li><a href="{{ route('status.edit', $status->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            {{-- <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a> --}}
-                                            <form action="{{ route('status.destroy', $status->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-link text-danger"><i class="ri-delete-bin-6-fill align-bottom me-2 text-muted"></i> Delete</button>
-                                            </form>    
-                                        </li>
+                                        @endcan
+                                        @can('status-delete') 
+                                            <li>                                               
+                                                <form action="{{ route('status.destroy', $status->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-link text-danger"><i class="ri-delete-bin-6-fill align-bottom me-2 text-muted"></i> Delete</button>
+                                                </form>    
+                                            </li>
+                                        @endcan
                                     </ul>
                                 </div>
                             </td>

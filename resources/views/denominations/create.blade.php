@@ -1,29 +1,29 @@
 @extends('layouts.master')
-@section('title') @lang('translation.status')  @endsection
+@section('title') @lang('translation.denominations')  @endsection
 @section('css')
 
 @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') @lang('translation.dashboards') @endslot
-@slot('title') @lang('translation.status')   @endslot
+@slot('title') @lang('translation.denominations')   @endslot
 @endcomponent
 
 <div class="row justify-content-center">
     <div class="col-xxl-9">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Create status</h4>                
+                <h4 class="card-title mb-0 flex-grow-1">Create Denomination</h4>                
             </div><!-- end card header -->
             <div class="card-body p-4">
-                <form method="POST" action="{{ route('status.store') }}">
+                <form method="POST" action="{{ route('denominations.store') }}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="status_name" class="form-label">Status name</label>
-                                <input type="text" class="form-control" name="status_name" id="status_name" placeholder="Enter status name" value="{{ old('status_name') }}">
-                                @error('status_name')                                           
+                                <label for="denomination_name" class="form-label">Denomination name</label>
+                                <input type="text" class="form-control" name="denomination_name" id="name" placeholder="Enter status name" value="{{ old('denomination_name') }}">
+                                @error('denomination_name')                                           
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -37,17 +37,15 @@
                                 @enderror
                             </div>
                         </div><!--end col-->
-                        <div class="col-md-3">
+                        <div class="col-lg-4 col-md-6">
                             <div class="mb-3">
-                                <label for="status_color" class="form-label">Color</label>
-                                <select class="form-select" name="status_color" id="status_color">                                  
-                                    <option value="success">Success</option>
-                                    <option value="primary opacity-25" >Opacity-25</option>
-                                    <option value="warning" >Warning</option>
-                                    <option value="danger">Danger</option>
-                                    <option value="primary bg-opacity-75" >Opacity-75 </option>                                   
-                                </select>                              
-                                @error('status_color')                                           
+                                <label for="status_id" class="form-label">Status</label>                                               
+                                <select name="status_id" id="status_id" class="form-select mb-3" aria-label="Default select example">
+                                    @foreach ( $statuses as $status)
+                                        <option value="{{ $status->id }}" >{{ $status->status_name }}</option>
+                                    @endforeach 
+                                </select>
+                                @error('status_id')                                           
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

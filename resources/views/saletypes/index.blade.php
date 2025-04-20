@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.users')  @endsection
+@section('title') @lang('translation.saletypes')  @endsection
 @section('css')
 
 <link href="{{ URL::asset('https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
@@ -9,7 +9,7 @@
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') @lang('translation.dashboards') @endslot
-@slot('title') @lang('translation.users')   @endslot
+@slot('title') @lang('translation.saletypes')   @endslot
 @endcomponent
 
 <div class="row">
@@ -21,12 +21,13 @@
             <div class="card-header border-0">
                 <div class="d-flex align-items-center">
                     <h5 class="card-title mb-0 flex-grow-1">@lang('translation.lists')</h5>
-                    <div class="flex-shrink-0">
-                        <div class="d-flex gap-2 flex-wrap">
-                            @can('user-create')                            
-                                <a href="{{route('users.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.users')</a>
+                    <div class="flex-shrink-0">                       
+                        <div class="d-flex gap-2 flex-wrap">    
+                            @can('saletype-create')                        
+                                <a href="{{route('saletypes.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.saletype')</a>
                             @endcan
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -35,58 +36,37 @@
                     <thead>
                         <tr>
                             
-                            <th>ID</th>
-                            <th>Profile</th>
-                            <th>Name</th>
-                            <th>Paternal surname </th>
-                            <th>Maternal surname</th>
-                            <th>Email</th>                            
-                            <th>Create Date</th>
-                            <th>Role</th>
-                            <th>Status</th>                            
+                            <th>ID</th>                           
+                            <th>Sale ype name</th>
+                            <th>description</th>                           
+                            <th>Create Date</th>   
+                            <th>Update Date</th>                                                                  
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        @foreach ($users as $user )                                                                          
+                        @foreach ($saleTypes as $saletype )                                                   
                         <tr>
-                            <td>{{$user->id}}</td>   
-                            <td> 
-                                <div class="avatar-group">
-                                    <a href="javascript: void(0);" class="avatar-group-item" data-img="avatar-3.jpg" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Username">
-                                        <img src=" @if($user->avatar != '') {{ asset('storage/'.$user->avatar) }} @else {{ asset('assets/images/users/user-dummy-img.jpg') }} @endif" alt="" class="rounded-circle avatar-xxs">
-                                    </a>
-                                </div>
-                            </td>                         
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->paternal_surname}}</td>
-                            <td>{{$user->maternal_surname}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->created_at}}</td>   
-                            <td>                               
-                                @foreach ($user->roles as $role)                                       
-                                    <span class="badge bg-success">{{ $role->name }}</span>
-                                @endforeach                            
-                            </td>
-                            {{-- badge badge-label bg-secondary --}}                         
-                            <td><span class="badge  bg-{{$user->status ? $user->status->status_color : ''}} ">{{$user->status ? $user->status->status_name : ''}}</span> </td>                           
+                            <td>{{$saletype->id}}</td>                                                   
+                            <td>{{$saletype->name}}</td> 
+                            <td>{{$saletype->description}}</td>                                                       
+                            <td>{{$saletype->created_at}}</td>   
+                            <td>{{$saletype->updated_at}}</td>                                                                             
                             <td>
                                 <div class="dropdown d-inline-block">
                                     <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="ri-more-fill align-middle"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        @can('user-show')
-                                            <li><a href="{{ route('users.show', $user->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                        @can('saletype-show') 
+                                            <li><a href="{{ route('saletypes.show', $saletype->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
                                         @endcan
-                                        @can('user-edit')  
-                                            <li><a href="{{ route('users.edit', $user->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>                                    
-                                            <li><a href="{{ route('users.editpassword', $user->id)}}" class="dropdown-item edit-item-btn"><i class="ri-lock-password-line align-bottom me-2 text-muted"></i> Edit password</a></li>
+                                        @can('saletype-edit') 
+                                        <li><a href="{{ route('saletypes.edit', $saletype->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                         @endcan
-                                        @can('user-delete') 
-                                            <li>                                                
-                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                        @can('saletype-delete') 
+                                            <li>                                               
+                                                <form action="{{ route('saletypes.destroy', $saletype->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-link text-danger"><i class="ri-delete-bin-6-fill align-bottom me-2 text-muted"></i> Delete</button>
@@ -104,7 +84,6 @@
         </div>
     </div>
 </div>
-<!--end row-->
 
 @endsection
 
@@ -120,6 +99,6 @@
 <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js') }}"></script>
 <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js') }}"></script>
 
-<script src="{{ URL::asset('assets/js/pages/users/datatables.init.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/statuses/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
 @endsection
