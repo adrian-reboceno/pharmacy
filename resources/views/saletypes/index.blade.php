@@ -37,7 +37,7 @@
                         <tr>
                             
                             <th>ID</th>                           
-                            <th>Sale ype name</th>
+                            <th>Sale type name</th>
                             <th>description</th>                           
                             <th>Create Date</th>   
                             <th>Update Date</th>                                                                  
