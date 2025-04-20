@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
+
 
 class RoleController extends Controller  implements HasMiddleware
 {

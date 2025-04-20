@@ -3,12 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Denomination;
 use App\Models\Status;
 
-class DenominationController extends Controller
+
+class DenominationController extends Controller implements HasMiddleware
 {
+    /**
+     * middleware to check if the user is authenticated
+     * and has the role of 'admin' or 'super-admin'
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:denomination-list', only: ['index']),
+            new Middleware('permission:denomination-create', only: ['create', 'store']),
+            new Middleware('permission:denomination-show', only: ['show']),
+            new Middleware('permission:denomination-edit', only: ['edit', 'update']),
+            new Middleware('permission:denomination-delete', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */

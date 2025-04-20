@@ -3,12 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Laboratory;
 use App\Models\Status;
 
-class LaboratoryController extends Controller
+
+class LaboratoryController extends Controller implements HasMiddleware
 {
+    /**
+     * middleware to check if the user is authenticated
+     * and has the role of 'admin' or 'super-admin'
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:laboratory-list', only: ['index']),
+            new Middleware('permission:laboratory-create', only: ['create', 'store']),
+            new Middleware('permission:laboratory-show', only: ['show']),
+            new Middleware('permission:laboratory-edit', only: ['edit', 'update']),
+            new Middleware('permission:laboratory-delete', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
