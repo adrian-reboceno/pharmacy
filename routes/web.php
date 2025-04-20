@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DenominationController;
 use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\SaleTypeController;
+use App\Http\Controllers\PharmaceuticalFormController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,6 +56,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('saletypes', SaleTypeController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('pharmaceuticalforms', PharmaceuticalFormController::class);
 });
 /* Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);

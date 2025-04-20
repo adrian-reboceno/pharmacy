@@ -72,6 +72,9 @@
                             <li class="nav-item">
                                 <a href="{{route('saletypes.index')}}" class="nav-link">@lang('translation.saletypes')</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('pharmaceuticalforms.index')}}" class="nav-link">@lang('translation.pharmaceuticalforms')</a>
+                            </li>
                         </ul>
                     </div>            
                 </li>
