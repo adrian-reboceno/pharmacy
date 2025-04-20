@@ -63,6 +63,10 @@ class DenominationController extends Controller
     public function show(string $id)
     {
         //
+        // Fetch the denomination by ID
+        $denomination = Denomination::with('status')->findOrFail($id);
+        // Return the show view with the denomination
+        return view('denominations.show', compact('denomination'));
     }
 
     /**
