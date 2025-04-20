@@ -181,7 +181,7 @@
     <script src="{{ URL::asset('assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}"> </script>
     <script src="{{ URL::asset('assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}"></script>
     <script src="{{ URL::asset('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
-    <script src="{{ URL::asset('build/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ URL::asset('assets/libs/prismjs/prism.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/users/user.init.js') }}"></script>
     
     
