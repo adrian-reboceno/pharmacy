@@ -53,7 +53,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarCatalog" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarCatalog">
-                        <i class="ri-account-circle-line"></i> <span>@lang('translation.catalogs')</span>
+                        <i class="ri-apps-2-line"></i> <span>@lang('translation.catalogs')</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarCatalog">
                         <ul class="nav nav-sm flex-column">
@@ -74,6 +74,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('pharmaceuticalforms.index')}}" class="nav-link">@lang('translation.pharmaceuticalforms')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('symptoms.index')}}" class="nav-link">@lang('translation.symptoms')</a>
                             </li>
                         </ul>
                     </div>            
