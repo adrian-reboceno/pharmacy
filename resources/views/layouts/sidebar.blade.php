@@ -103,6 +103,26 @@
                     </div>            
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarSupplier" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarUser">
+                        <i class="ri-contacts-line"></i> <span>@lang('translation.managersuppliers')</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarSupplier">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{-- {{ route('users.index') }} --}}" class="nav-link">@lang('translation.suppliers')</a>
+                            </li>                           
+                           {{--  <li class="nav-item">
+                                <a href="{{ route('roles.index') }}" class="nav-link">@lang('translation.roles')</a>
+                            </li> --}}
+                            {{--  <li class="nav-item">
+                                <a href="pages-team" class="nav-link">@lang('translation.permissions')</a>
+                            </li> --}}
+                        </ul>
+                    </div>            
+                </li>
+
 
 
 
