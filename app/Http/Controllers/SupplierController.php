@@ -4,12 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Models\Supplier;
 use App\Models\State;
 use App\Models\Status;
 
-class SupplierController extends Controller
+class SupplierController extends Controller implements HasMiddleware
 {
+    /**
+     * middleware to check if the user is authenticated
+     * and has the role of 'admin' or 'super-admin'
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:supplier-list', only: ['index']),
+            new Middleware('permission:supplier-create', only: ['create', 'store']),
+            new Middleware('permission:supplier-show', only: ['show']),
+            new Middleware('permission:supplier-edit', only: ['edit', 'update']),
+            new Middleware('permission:supplier-delete', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */

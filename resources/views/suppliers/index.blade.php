@@ -23,7 +23,7 @@
                     <h5 class="card-title mb-0 flex-grow-1">@lang('translation.lists')</h5>
                     <div class="flex-shrink-0">                       
                         <div class="d-flex gap-2 flex-wrap">    
-                            @can('symptom-create')                        
+                            @can('supplier-create')                        
                                 <a href="{{route('suppliers.create')}}" class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> @lang('translation.supplier')</a>
                             @endcan
                         </div>
@@ -68,13 +68,13 @@
                                         <i class="ri-more-fill align-middle"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        @can('symptom-show') 
+                                        @can('supplier-show') 
                                             <li><a href="{{ route('suppliers.show', $supplier->id)}}" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
                                         @endcan
-                                        @can('symptom-edit') 
+                                        @can('supplier-edit') 
                                         <li><a href="{{ route('suppliers.edit', $supplier->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                         @endcan
-                                        @can('symptom-delete') 
+                                        @can('supplier-delete') 
                                             <li>                                               
                                                 <form action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST">
                                                     @csrf
