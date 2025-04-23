@@ -111,14 +111,8 @@
                     <div class="collapse menu-dropdown" id="sidebarSupplier">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{-- {{ route('users.index') }} --}}" class="nav-link">@lang('translation.suppliers')</a>
-                            </li>                           
-                           {{--  <li class="nav-item">
-                                <a href="{{ route('roles.index') }}" class="nav-link">@lang('translation.roles')</a>
-                            </li> --}}
-                            {{--  <li class="nav-item">
-                                <a href="pages-team" class="nav-link">@lang('translation.permissions')</a>
-                            </li> --}}
+                                <a href="{{ route('suppliers.index') }}" class="nav-link">@lang('translation.suppliers')</a>
+                            </li>                                                      
                         </ul>
                     </div>            
                 </li>
