@@ -3,11 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Models\SaleType;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class SaleTypeController extends Controller
+
+class SaleTypeController extends Controller implements HasMiddleware
 {
+     /** 
+     * middleware to check if the user is authenticated
+     * and has the role of 'admin' or 'super-admin'
+     */
+    public static function middleware(): array
+    {
+        return [           
+            new Middleware('permission:saletype-list', only: ['index']),
+            new Middleware('permission:saletype-create', only: ['create', 'store']),
+            new Middleware('permission:saletype-show', only: ['show']),
+            new Middleware('permission:saletype-edit', only: ['edit', 'update']),
+            new Middleware('permission:saletype-delete', only: ['destroy']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */

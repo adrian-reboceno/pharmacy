@@ -53,7 +53,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarCatalog" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarCatalog">
-                        <i class="ri-account-circle-line"></i> <span>@lang('translation.catalogs')</span>
+                        <i class="ri-apps-2-line"></i> <span>@lang('translation.catalogs')</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarCatalog">
                         <ul class="nav nav-sm flex-column">
@@ -71,6 +71,12 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('saletypes.index')}}" class="nav-link">@lang('translation.saletypes')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('pharmaceuticalforms.index')}}" class="nav-link">@lang('translation.pharmaceuticalforms')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('symptoms.index')}}" class="nav-link">@lang('translation.symptoms')</a>
                             </li>
                         </ul>
                     </div>            
@@ -93,6 +99,20 @@
                             {{--  <li class="nav-item">
                                 <a href="pages-team" class="nav-link">@lang('translation.permissions')</a>
                             </li> --}}
+                        </ul>
+                    </div>            
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarSupplier" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarUser">
+                        <i class="ri-contacts-line"></i> <span>@lang('translation.managersuppliers')</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarSupplier">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('suppliers.index') }}" class="nav-link">@lang('translation.suppliers')</a>
+                            </li>                                                      
                         </ul>
                     </div>            
                 </li>

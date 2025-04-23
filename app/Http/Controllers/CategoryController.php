@@ -3,13 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Category;
 use App\Models\Status;
 
-class CategoryController extends Controller
+
+class CategoryController extends Controller implements HasMiddleware
 {
+    /**
+     * middleware to check if the user is authenticated
+     * and has the role of 'admin' or 'super-admin'
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:category-list', only: ['index']),
+            new Middleware('permission:category-create', only: ['create', 'store']),
+            new Middleware('permission:category-show', only: ['show']),
+            new Middleware('permission:category-edit', only: ['edit', 'update']),
+            new Middleware('permission:category-delete', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */

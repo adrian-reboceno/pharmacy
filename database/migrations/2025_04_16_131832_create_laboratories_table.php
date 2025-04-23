@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('laboratories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('status_id')->nullable()->constrained('statuses')->after('id');
+            $table->foreignId('status_id')->nullable()->constrained('statuses');
             $table->string('name')->unique();   
             $table->text('address')->nullable();                              
             $table->timestamps();

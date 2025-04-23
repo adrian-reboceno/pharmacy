@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Status;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+
+use App\Models\Status;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StatusController extends Controller  implements HasMiddleware
 {

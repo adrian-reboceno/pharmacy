@@ -33,6 +33,7 @@ return [
     "permissions" => "Permissions",
     "permission" => "Permission",
     "suppliers" => "Suppliers",
+    'managersuppliers' => "Manager Suppliers",
     "supplier" => "Supplier",
     "email" => "Email",
     "phone" => "Phone",
