@@ -185,7 +185,7 @@
     <script src="{{ URL::asset('assets/js/pages/users/user.init.js') }}"></script>
     
     
-    <script src="{{ URL::asset('assets/js/pages/select2.init.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/pages/select/select2.init.js') }}"></script>
     
 @endsection
 
