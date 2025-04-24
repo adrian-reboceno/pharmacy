@@ -26,17 +26,7 @@ class FileHelper
        /*  dd($data); */
         $originalName = $fileData['name'];
 
-       /*  if (preg_match('/^data:(\w+\/\w+);base64,/', $data, $matches)) {
-            $mimeType = $matches[1]; // e.g. image/jpeg or application/pdf
-            $data = substr($data, strpos($data, ',') + 1);
-
-            // Obtener extensión desde MIME
-            $extension = self::mimeToExtension($mimeType);
-        } else {
-           // return null;
-        } */
-        $extension = self::mimeToExtension($fileData['type']);
-       
+        $extension = self::mimeToExtension($fileData['type']);       
         // Validar tipo
         if (!in_array($extension, $allowedTypes)) {
             return null;
@@ -56,9 +46,7 @@ class FileHelper
 
         // Nombre único
         $filename = Str::random(10) . '.' . $extension;
-
         
-
         // Guardar en disco
         Storage::disk('public')->put("{$path}/{$filename}", $decoded);
 

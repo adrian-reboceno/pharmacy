@@ -200,7 +200,7 @@ class UserController extends Controller  implements HasMiddleware
     public function uploadFile(Request $request)
     {
         $archivoArray = json_decode($request->avatar, true);
-        $ruta = FileHelper::saveBase64File($archivoArray);    
+        $ruta = FileHelper::saveBase64File($archivoArray, 'profile');    
         
         if (!$ruta) {
             return null;
