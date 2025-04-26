@@ -39,7 +39,8 @@
                             <th>ID</th>                           
                             <th>Status</th>
                             <th>description</th>
-                            <th>Status color</th>  
+                            <th>Status color</th> 
+                            <th>Exclusive</th> 
                             <th>Create Date</th>   
                             <th>Update Date</th>                                                                  
                             <th>Action</th>
@@ -52,6 +53,7 @@
                             <td>{{$status->status_name}}</td> 
                             <td>{{$status->description}}</td>                            
                             <td><div class="bg-{{$status->status_color}} p-2"></div></td>
+                            <td>{{$status->exclusive}}</td>
                             <td>{{$status->created_at}}</td>   
                             <td>{{$status->updated_at}}</td>                                                                             
                             <td>
