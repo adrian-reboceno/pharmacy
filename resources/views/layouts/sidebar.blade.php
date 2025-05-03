@@ -102,10 +102,10 @@
                         </ul>
                     </div>            
                 </li>
-
+                <!-- SupplierMenu-->
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarSupplier" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarUser">
+                        aria-expanded="false" aria-controls="sidebarSupplier">
                         <i class="ri-contacts-line"></i> <span>@lang('translation.managersuppliers')</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarSupplier">
@@ -114,9 +114,22 @@
                                 <a href="{{ route('suppliers.index') }}" class="nav-link">@lang('translation.suppliers')</a>
                             </li>                                                      
                         </ul>
-                    </div>            
+                    </div>
                 </li>
-
+                <!-- ProductMenu-->
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarProduct" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarProduct">
+                        <i class="ri-product-hunt-line"></i> <span>@lang('translation.managerproduct')</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarProduct">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('products.index') }}" class="nav-link">@lang('translation.products')</a>
+                            </li>                                                      
+                        </ul>
+                    </div>
+                </li>
 
 
 

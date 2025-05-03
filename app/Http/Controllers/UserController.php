@@ -81,12 +81,12 @@ class UserController extends Controller  implements HasMiddleware
             'phone_numbrer' => $request->phone_numbrer,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'avatar' => $uploadFile,
+            'avatar' => $uploadFile['file_path'],
             'status_id' => $request->status_id],
         );
         $user->syncRoles($request->roles);
 
-        Alert::toast('User updated successfully!', 'success')
+        Alert::toast('Create user successfully!', 'success')
         ->position('top-right')
         ->autoClose(3000)
         ->timerProgressBar();

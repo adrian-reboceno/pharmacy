@@ -1,6 +1,10 @@
 function initializeTables() {
     new DataTable("#datatables", {
-        fixedHeader: !0
+        "fixedHeader": true,
+       /*  "scrollX": true,
+        "scrollY": "210px",
+        "scrollCollapse": true, */
+        
     })
 }
 document.addEventListener("DOMContentLoaded", function() {

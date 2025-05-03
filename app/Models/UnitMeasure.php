@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class UnitMeasure extends Model
 {
@@ -13,4 +15,8 @@ class UnitMeasure extends Model
         'abbreviation',
         'status_id'
     ];
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
