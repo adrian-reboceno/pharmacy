@@ -26,8 +26,7 @@
             <div class="card mt-n5">
                 <div class="card-body p-4">                 
                     <div class="avatar-xl mx-auto">
-                        <input type="file" class="filepond filepond-input-circle" name="avatar"
-                            accept="image/png, image/jpeg, image/gif" />
+                        <input type="file" class="filepond filepond-input-circle" name="avatar" accept="image/png, image/jpeg, image/gif" />
                     </div>
                 </div>
             </div>
@@ -172,7 +171,6 @@
 @endsection
 @section('script')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <!--select2 cdn-->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ URL::asset('assets/libs/dropzone/dropzone-min.js') }}"></script>
@@ -183,9 +181,7 @@
     <script src="{{ URL::asset('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
     <script src="{{ URL::asset('assets/libs/prismjs/prism.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/users/user.init.js') }}"></script>
-    
-    
-    <script src="{{ URL::asset('assets/js/pages/select2.init.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/pages/select/select2.init.js') }}"></script>
     
 @endsection
 

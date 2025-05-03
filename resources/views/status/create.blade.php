@@ -52,6 +52,18 @@
                                 @enderror
                             </div>
                         </div><!--end col-->
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="exclusive" class="form-label">Exclusive</label>
+                                <select class="form-select" name="exclusive" id="exclusive">                                  
+                                    <option value="system">System</option>
+                                    <option value="product" >Product</option>                                                                    
+                                </select>                              
+                                @error('exclusive')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">@lang('translation.create')</button>

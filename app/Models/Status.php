@@ -11,5 +11,6 @@ class Status extends Model
         'status_name',
         'description',
         'status_color',
+        'exclusive',
     ];
 }

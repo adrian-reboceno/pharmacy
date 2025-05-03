@@ -16,7 +16,7 @@ class FileHelper
      * @param array $allowedTypes Tipos permitidos ('jpeg', 'png', 'pdf', etc.)
      * @return string|null Ruta del archivo o null si hubo error
      */
-    public static function saveBase64File(array $fileData, string $path = 'uploads', int $maxSizeKB = 5120, array $allowedTypes = ['jpeg', 'jpg', 'png', 'gif', 'webp', 'pdf']): ?string
+    public static function saveBase64File(array $fileData, string $path = 'uploads', int $maxSizeKB = 5120, array $allowedTypes = ['jpeg', 'jpg', 'png', 'gif', 'webp', 'pdf']): ?array
     {
         if (!isset($fileData['data']) || !isset($fileData['name'])) {
             return null;
@@ -26,17 +26,7 @@ class FileHelper
        /*  dd($data); */
         $originalName = $fileData['name'];
 
-       /*  if (preg_match('/^data:(\w+\/\w+);base64,/', $data, $matches)) {
-            $mimeType = $matches[1]; // e.g. image/jpeg or application/pdf
-            $data = substr($data, strpos($data, ',') + 1);
-
-            // Obtener extensión desde MIME
-            $extension = self::mimeToExtension($mimeType);
-        } else {
-           // return null;
-        } */
-        $extension = self::mimeToExtension($fileData['type']);
-       
+        $extension = self::mimeToExtension($fileData['type']);       
         // Validar tipo
         if (!in_array($extension, $allowedTypes)) {
             return null;
@@ -56,13 +46,15 @@ class FileHelper
 
         // Nombre único
         $filename = Str::random(10) . '.' . $extension;
-
         
-
         // Guardar en disco
         Storage::disk('public')->put("{$path}/{$filename}", $decoded);
 
-        return "{$path}/{$filename}";
+        /* return "{$path}/{$filename}"; */
+        return [
+        'file_name' => $filename,
+        'file_path' => "{$path}/{$filename}",
+        ];
     }
 
     /**

@@ -12,6 +12,7 @@ use App\Http\Controllers\SaleTypeController;
 use App\Http\Controllers\PharmaceuticalFormController;
 use App\Http\Controllers\SymptomController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,6 +68,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('suppliers', SupplierController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('products', ProductController::class);
 });
 /* Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);

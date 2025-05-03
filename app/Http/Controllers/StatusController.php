@@ -57,12 +57,15 @@ class StatusController extends Controller  implements HasMiddleware
         $request->validate([
             'status_name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
-            'color' => 'nullable|string|max:255', 
+            'status_color' => 'nullable|string|max:255', 
+            'exclusive' => 'nullable|in:system,product', // Ensure exclusive is either 'system' or 'product'
         ]);
         // Create a new status instance
         $status = Status::create([
             'status_name' => $request->status_name,
             'description' => $request->description,
+            'status_color' => $request->status_color,
+            'exclusive' => $request->exclusive, // Store the exclusive value
         ]);
         // Show success message       
 
@@ -109,13 +112,15 @@ class StatusController extends Controller  implements HasMiddleware
         $request->validate([
             'status_name' => 'required|string|max:255',    
             'description' => 'nullable|string|max:255',         
-            'color' => 'nullable|string|max:255',        
+            'status_color' => 'nullable|string|max:255',  
+            'exclusive' => 'nullable|in:system,product', // Ensure exclusive is either 'system' or 'product'      
         ]);
         // Update the status instance
         $status->update([
             'status_name' => $request->status_name,
             'description' => $request->description,
             'status_color' => $request->status_color,
+            'exclusive' => $request->exclusive, // Store the exclusive value
         ]);
         // Show success message 
         Alert::toast('Status updated successfully!', 'success')
