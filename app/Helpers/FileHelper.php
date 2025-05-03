@@ -16,7 +16,7 @@ class FileHelper
      * @param array $allowedTypes Tipos permitidos ('jpeg', 'png', 'pdf', etc.)
      * @return string|null Ruta del archivo o null si hubo error
      */
-    public static function saveBase64File(array $fileData, string $path = 'uploads', int $maxSizeKB = 5120, array $allowedTypes = ['jpeg', 'jpg', 'png', 'gif', 'webp', 'pdf']): ?string
+    public static function saveBase64File(array $fileData, string $path = 'uploads', int $maxSizeKB = 5120, array $allowedTypes = ['jpeg', 'jpg', 'png', 'gif', 'webp', 'pdf']): ?array
     {
         if (!isset($fileData['data']) || !isset($fileData['name'])) {
             return null;
@@ -50,7 +50,11 @@ class FileHelper
         // Guardar en disco
         Storage::disk('public')->put("{$path}/{$filename}", $decoded);
 
-        return "{$path}/{$filename}";
+        /* return "{$path}/{$filename}"; */
+        return [
+        'file_name' => $filename,
+        'file_path' => "{$path}/{$filename}",
+        ];
     }
 
     /**
