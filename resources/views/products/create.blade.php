@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div class="mb-3">
-                                            <label for="Quantity" class="form-label">quantity</label>
+                                            <label for="quantity" class="form-label">quantity</label>
                                             <input type="number" class="form-control" placeholder="10" id="quantity" name="quantity" value="{{ old('quantity') }}">
                                         </div>
                                         @error('quantity')

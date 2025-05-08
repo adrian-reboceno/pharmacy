@@ -36,4 +36,8 @@ class Supplier extends Model
     {
         return $this->belongsTo(Status::class);
     }
+    public function batches()
+    {
+        return $this->hasMany(Batch::class);
+    }
 }
