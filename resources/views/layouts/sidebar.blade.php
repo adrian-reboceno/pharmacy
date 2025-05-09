@@ -126,7 +126,10 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('products.index') }}" class="nav-link">@lang('translation.products')</a>
-                            </li>                                                      
+                            </li>   
+                            <li class="nav-item">
+                                <a href="{{ route('batches.index') }}" class="nav-link">@lang('translation.batches')</a>
+                            </li>                                                   
                         </ul>
                     </div>
                 </li>

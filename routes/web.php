@@ -13,6 +13,10 @@ use App\Http\Controllers\PharmaceuticalFormController;
 use App\Http\Controllers\SymptomController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BatchController;
+use App\Livewire\BatchForm;
+use livewire\Livewire;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,6 +76,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
 });
+Route::middleware('auth')->group(function () {
+    Route::resource('batches', BatchController::class);
+});
+
+
+/* Route::Livewire('/batches/form', BatchForm::class)->name('batches.form'); */
 /* Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);
 });
