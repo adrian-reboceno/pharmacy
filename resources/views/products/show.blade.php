@@ -320,7 +320,12 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Unit of Measure</th>
-                                                        <td>{{$product->UnitMeasure->name}} ({{$product->UnitMeasure->abbreviation}}) </td>                                                 
+                                                        <td>{{$product->UnitMeasure->name}} ({{$product->UnitMeasure->abbreviation}}) </td>      
+                                                    </tr> 
+                                                    <tr>
+                                                        <th scope="row">Units per box</th>
+                                                        <td>{{$product->units_box}}</td>
+                                                    </tr>                                          
                                                 </tbody>
                                             </table>
                                         </div>
