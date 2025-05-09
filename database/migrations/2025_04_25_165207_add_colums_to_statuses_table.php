@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('statuses', function (Blueprint $table) {
             //
             // Add the new columns to the statuses table           
-            $table->enum('exclusive', ['system', 'product'])->default('system')->after('status_color');
+            $table->enum('exclusive', ['system', 'product','batch'])->default('system')->after('status_color');
         });
     }
 

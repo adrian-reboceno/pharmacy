@@ -15,7 +15,7 @@ class Status extends Model
     ];
     protected $casts = [
         'status_color' => 'string',
-        'exclusive' => 'boolean',
+        
     ];
     public function batches()
     {

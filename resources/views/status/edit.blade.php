@@ -59,7 +59,8 @@
                                 <label for="exclusive" class="form-label">Exclusive</label>
                                 <select class="form-select" name="exclusive" id="exclusive"> 
                                     <option value="system" @if($status->exclusive == 'system') selected @endif>System</option>                                                 
-                                    <option value="product" @if($status->exclusive == 'product') selected @endif>Product</option>                   
+                                    <option value="product" @if($status->exclusive == 'product') selected @endif>Product</option>    
+                                    <option value="product" @if($status->exclusive == 'batch') selected @endif>batch</option>                                                       
                                 </select>                              
                                 @error('exclusive')                                           
                                     <div class="text-danger">{{ $message }}</div>

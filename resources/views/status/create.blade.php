@@ -57,7 +57,8 @@
                                 <label for="exclusive" class="form-label">Exclusive</label>
                                 <select class="form-select" name="exclusive" id="exclusive">                                  
                                     <option value="system">System</option>
-                                    <option value="product" >Product</option>                                                                    
+                                    <option value="product" >Product</option>   
+                                    <option value="batch" >Batch</option>                                                                    
                                 </select>                              
                                 @error('exclusive')                                           
                                     <div class="text-danger">{{ $message }}</div>

@@ -58,7 +58,7 @@ class StatusController extends Controller  implements HasMiddleware
             'status_name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
             'status_color' => 'nullable|string|max:255', 
-            'exclusive' => 'nullable|in:system,product', // Ensure exclusive is either 'system' or 'product'
+            'exclusive' => 'nullable|in:system,product,batch', // Ensure exclusive is either 'system' , 'product' , 'batch'
         ]);
         // Create a new status instance
         $status = Status::create([
@@ -113,7 +113,7 @@ class StatusController extends Controller  implements HasMiddleware
             'status_name' => 'required|string|max:255',    
             'description' => 'nullable|string|max:255',         
             'status_color' => 'nullable|string|max:255',  
-            'exclusive' => 'nullable|in:system,product', // Ensure exclusive is either 'system' or 'product'      
+            'exclusive' => 'nullable|in:system,product,batch', // Ensure exclusive is either 'system' , 'product' ,'batch'
         ]);
         // Update the status instance
         $status->update([
