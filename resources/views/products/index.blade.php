@@ -76,6 +76,7 @@
                                         @can('status-edit') 
                                         <li><a href="{{ route('products.edit', $product->id)}}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                         @endcan
+                                        <li><a href="{{ route('products.show', $product->id)}}" class="dropdown-item"><i class="ri-add-box-line  align-bottom me-2 text-muted"></i> Add batches </a></li>
                                         @can('status-delete') 
                                             <li>                                               
                                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST">

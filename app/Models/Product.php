@@ -87,6 +87,10 @@ class Product extends Model
     {
         return $this->hasOne(ProductSymptom::class)->where('id', $id);
     }
+    public function batches()
+    {
+        return $this->hasMany(Batch::class);
+    }
     
 
 }
